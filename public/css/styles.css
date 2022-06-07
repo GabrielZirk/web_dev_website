@@ -11435,6 +11435,8 @@ html {
   flex-flow: row wrap;
   justify-content: space-around;
   margin-top: 1.5rem;
+  margin-right: 10%;
+  margin-left: 10%;
   gap: 0.5rem;
 }
 
