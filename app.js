@@ -11,8 +11,8 @@ app.use(express.static('public'));
 const transporter = nodemailer.createTransport({
     service: "gmail",
     auth: {
-        user: "schutzmarke@gmail.com",
-        pass: "cith jybs tvzx hmqa"
+        user: process.env.GMAILMAIL,
+        pass: process.env.GMAILPASS
     },
     tls: {
         rejectUnauthorized: false
