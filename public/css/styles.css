@@ -11537,3 +11537,6 @@ html {
   z-index: -1;
 }
 
+.g-recaptcha {
+  margin-top: 1rem;
+}
