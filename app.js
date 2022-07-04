@@ -2,6 +2,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const nodemailer = require("nodemailer");
 require('dotenv').config();
+const request = require('request');
 
 const app = express();
 
@@ -28,6 +29,24 @@ app.get("/", (req, res) => {
 });
 
 app.post("/contact", (req, res) => {
+
+    if(req.body['g-recaptcha-response'] === undefined || req.body['g-recaptcha-response'] === '' || req.body['g-recaptcha-response'] === null)
+    {
+      console.log("Something went wrong.");
+    }
+
+    const secretKey = process.env.RECAPTCHAKEY
+
+    const verificationURL = "https://www.google.com/recaptcha/api/siteverify?secret=" + secretKey + "&response=" + req.body['g-recaptcha-response'] + "&remoteip=" + req.connection.remoteAddress;
+
+    request(verificationURL,function(error,response,body) {
+        body = JSON.parse(body);
+    
+        if(body.success !== undefined && !body.success) {
+         console.log("Failed captcha verification");
+        }
+        else {
+
     console.log(req.body)
     mailBody = "Mail: " + req.body.whoIsSending + "\n" + "Name: " + req.body.whoIsXyz + "\n" + "Message: " + req.body.whatsTheMatter
 
@@ -46,15 +65,9 @@ app.post("/contact", (req, res) => {
             console.log("Mail successfully sent.")
             res.redirect("/#contact");
         }
-    });
+    }
+)}});
     
-
-
-
-
-
-
-
 
     res.redirect("/#contact")
 })
