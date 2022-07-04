@@ -28,8 +28,8 @@ app.get("/", (req, res) => {
 });
 
 app.post("/contact", (req, res) => {
-    console.log(req.body.fullName, req.body.mailAdress, req.body.message);
-    mailBody = "Mail: " + req.body.mailAdress + "\n" + "Name: " + req.body.fullName + "\n" + "Message: " + req.body.message
+    console.log(req.body)
+    mailBody = "Mail: " + req.body.whoIsSending + "\n" + "Name: " + req.body.whoIsXyz + "\n" + "Message: " + req.body.whatsTheMatter
 
     let mailOptions = {
         from: req.body.mailAdress,
