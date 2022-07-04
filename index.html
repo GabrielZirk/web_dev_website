@@ -225,28 +225,36 @@
             <div class="row justify-content-center">
                 <div class="col-lg-8 col-xl-7">
                     <form id="contactForm" method="post" action="/contact">
-                        <!-- Name input-->
+                        <!-- honey -->
+                        <label class="honey" for="name"></label>
+                        <input class="honey" autocomplete="off" type="text" id="name" name="name" placeholder="Your name here">
+                        <label class="honey" for="email"></label>
+                        <input class="honey" autocomplete="off" type="email" id="email" name="email" placeholder="Your e-mail here">
+
+                        <!-- end honey-->
                         <div class="form-floating mb-3">
-                            <input class="form-control" name="fullName" type="text" placeholder="Enter your name..."
+                            <input class="form-control" name="whoIsXyz" type="text" placeholder="Enter your name..."
                                 required />
-                            <label for="fullName">Full name</label>
+                            <label for="whoIsXyz">Full name</label>
                         </div>
-                        <!-- Email address input-->
+
                         <div class="form-floating mb-3">
-                            <input class="form-control" name="mailAdress" type="email" placeholder="name@example.com"
+                            <input class="form-control" name="whoIsSending" type="email" placeholder="name@example.com"
                                 required />
-                            <label for="mailAdress">Email address</label>
+                            <label for="whoIsSending">Email address</label>
 
                         </div>
-                        <!-- Message input-->
+
                         <div class="form-floating mb-3">
-                            <textarea class="form-control" name="message" type="text"
+                            <textarea class="form-control" name="whatsTheMatter" type="text"
                                 placeholder="Enter your message here..." style="height: 10rem" required></textarea>
-                            <label for="message">Message</label>
+                            <label for="whatsTheMatter">Message</label>
                         </div>
 
                         <button class="btn btn-primary btn-xl" id="submitButton" type="submit"
                             value="submit">Send</button>
+
+
                     </form>
                 </div>
             </div>
