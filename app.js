@@ -1,6 +1,7 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const nodemailer = require("nodemailer");
+require('dotenv').config();
 
 const app = express();
 
@@ -28,13 +29,13 @@ app.get("/", (req, res) => {
 
 app.post("/contact", (req, res) => {
     console.log(req.body.fullName, req.body.mailAdress, req.body.message);
+    mailBody = "Mail: " + req.body.mailAdress + "\n" + "Name: " + req.body.fullName + "\n" + "Message: " + req.body.message
 
     let mailOptions = {
         from: req.body.mailAdress,
         to: "gabriel.zirkovits@gmail.com",
         subject: "Portfolio Website Contact Form",
-        text: req.body.message,
-        name: req.body.fullName
+        text: mailBody
     };
     
     transporter.sendMail(mailOptions, (err, success) => {
